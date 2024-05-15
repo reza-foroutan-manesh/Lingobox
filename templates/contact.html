@@ -28,7 +28,7 @@
 
     <script src="./static/assets/js/jquery.min.js"></script>
 	<script src="./static/assets/js/modernizr.custom.js"></script>
-	
+
 	<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
 
     <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
@@ -41,7 +41,7 @@
     <![endif]-->
   </head>
 
-  <body data-spy="scroll" data-offset="0" data-target="#theMenu">
+  <body id="f" data-spy="scroll" data-offset="0" data-target="#theMenu">
 
 	<!-- Menu -->
 	<nav class="menu" id="theMenu">
@@ -50,7 +50,7 @@
 			<i class="icon-remove menu-close"></i>
 			<a href="{{url_for('home')}}" >Home</a>
 			<a href="/#translator" >Translator</a>
-			<a href="{{url_for('dictionary')}}" >Dictionary</a>
+			<a href="/#dictionary" >Dictionary</a>
 			<a href="#about" class="smoothScroll">About</a>
 			<a href="#portfolio" class="smoothScroll">Portfolio</a>
 			<a href="#contact" class="smoothScroll">Contact</a>
@@ -65,37 +65,59 @@
 	</nav>
 
 
-
-	<!-- ========== HEADER SECTION ========== -->
-	<section id="home"></section>
-
-	<div id="headerwrap">
+	<!-- ========== CAROUSEL SECTION ========== -->
+	<section id="carousel" ></section>
+	<div id="f">
 		<div class="container">
-			<div class="logo">
-				<img  src="./static/assets/img/logo.png">
-			</div>
-			<br>
-			<div class="row ">
-				<h1>Lingo Box</h1>
-				<br>
-				<h3>Translator and Dictionary Application</h3>
-				<br>
-				<br>
-				<div class="col-lg-12  my-5">
-					<a href="/#translator" class="btn-shine">Translator</a>
-					<a href="{{url_for('dictionary')}}" class="btn-shine">Dictionary</a>
+			<div class="row centered">
+				<h3>SOME PROJECTS</h3>
+				<p class="centered"><i class="icon icon-circle"></i><i class="icon icon-circle"></i><i class="icon icon-circle"></i></p>
 
+				<div class="col-lg-6 col-lg-offset-3">
+					<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+						<!-- Wrapper for slides -->
+						<div class="carousel-inner">
+							<div class="item active centered">
+								<img class="img-responsive" src="./static/assets/img/c1.png" alt="">
+							</div>
+							<div class="item centered">
+								<img class="img-responsive" src="./static/assets/img/c2.png" alt="">
+							</div>
+							<div class="item centered">
+								<img class="img-responsive" src="./static/assets/img/c3.png" alt="">
+							</div>
+						</div>
+						<br>
+						<br>
+						<ol class="carousel-indicators">
+						    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+						    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+						    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+						</ol>
+					</div>
+				</div><!-- col-lg-8 -->
+			</div><!-- row -->
+		</div><!-- container -->
+	</div>	<!-- f -->
+
+	<!-- ========== CONTACT SECTION ========== -->
+	<section id="contact" name="contact"></section>
+	<div id="f">
+		<div class="container">
+			<div class="row">
+				<h3>CONTACT ME</h3>
+				<p class="centered"><i class="icon icon-circle"></i><i class="icon icon-circle"></i><i class="icon icon-circle"></i></p>
+
+				<div class="col-lg-6 col-lg-offset-3">
+					<p>Some Avenue, 500<br/>Madrid, Spain<br/>+55*******</p>
+					<p>humble.py.test@gmail.com</p>
+					<p><button type="button" class="btn btn-warning">YEAH! CONTACT ME NOW!</button></p>
 				</div>
 			</div>
-		</div><!-- /container -->
-	</div><!-- /headerwrap -->
+		</div>
+	</div>
 
 
-
-
-
-
-	
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

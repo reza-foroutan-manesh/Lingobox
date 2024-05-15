@@ -28,7 +28,7 @@
 
     <script src="./static/assets/js/jquery.min.js"></script>
 	<script src="./static/assets/js/modernizr.custom.js"></script>
-	
+
 	<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
 
     <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
@@ -41,7 +41,7 @@
     <![endif]-->
   </head>
 
-  <body data-spy="scroll" data-offset="0" data-target="#theMenu">
+  <body id="f" data-spy="scroll" data-offset="0" data-target="#theMenu">
 
 	<!-- Menu -->
 	<nav class="menu" id="theMenu">
@@ -50,7 +50,7 @@
 			<i class="icon-remove menu-close"></i>
 			<a href="{{url_for('home')}}" >Home</a>
 			<a href="/#translator" >Translator</a>
-			<a href="{{url_for('dictionary')}}" >Dictionary</a>
+			<a href="/#dictionary" >Dictionary</a>
 			<a href="#about" class="smoothScroll">About</a>
 			<a href="#portfolio" class="smoothScroll">Portfolio</a>
 			<a href="#contact" class="smoothScroll">Contact</a>
@@ -66,36 +66,29 @@
 
 
 
-	<!-- ========== HEADER SECTION ========== -->
-	<section id="home"></section>
-
-	<div id="headerwrap">
+	<!-- ========== ABOUT SECTION ========== -->
+	<section id="about"></section>
+	<div id="f">
 		<div class="container">
-			<div class="logo">
-				<img  src="./static/assets/img/logo.png">
-			</div>
-			<br>
-			<div class="row ">
-				<h1>Lingo Box</h1>
-				<br>
-				<h3>Translator and Dictionary Application</h3>
-				<br>
-				<br>
-				<div class="col-lg-12  my-5">
-					<a href="/#translator" class="btn-shine">Translator</a>
-					<a href="{{url_for('dictionary')}}" class="btn-shine">Dictionary</a>
+			<div class="row">
 
+				<h3>ABOUT ME</h3>
+				<p class="centered"><i class="icon icon-circle"></i><i class="icon icon-circle"></i><i class="icon icon-circle"></i></p>
+
+				<!-- INTRO INFORMATIO-->
+				<div class="col-lg-6 col-lg-offset-3">
+					<p>A full time theme crafter based in Madrid, Spain. I love designing beautiful, clean and user-friendly interfaces for websites.</p>
+					<p>My passion is turning good ideas and products into eye-catching sites.</p>
+					<p>Sometimes I blog about design and web trends. Also I share links and my thoughts on <a href="http://twitter.com/BlackTie_co">Twitter</a>. Need a free handsome bootstrap theme? <a href="http://blacktie.co">Done!</a></p>
+					<p>I'm available for freelance jobs. Contact me now.</p>
+					<p><button type="button" class="btn btn-warning">I HAVE A FREELANCE JOB</button></p>
 				</div>
 			</div>
 		</div><!-- /container -->
-	</div><!-- /headerwrap -->
+	</div><!-- /f -->
 
 
 
-
-
-
-	
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
