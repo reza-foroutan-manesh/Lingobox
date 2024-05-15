@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="./static/assets/ico/favicon.png">
+
+    <title>MINIMAL - Free Bootstrap 3 Theme</title>
+
+<!--	  FONT AWESOME KIT-->
+	  <script src="https://kit.fontawesome.com/6f5f05ef9e.js" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap core CSS -->
+
+    <link href="./static/assets/css/bootstrap.css" rel="stylesheet">
+	  <link href="./static/assets/css/btn.css" rel="stylesheet">
+	  <link href="./static/assets/css/textbox.css" rel="stylesheet">
+	  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <title>Bootstrap Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom styles for this template -->
+    <link href="./static/assets/css/main.css" rel="stylesheet">
+	<link rel="stylesheet" href="./static/assets/css/font-awesome.min.css">
+
+    <script src="./static/assets/js/jquery.min.js"></script>
+	<script src="./static/assets/js/modernizr.custom.js"></script>
+
+	<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+
+    <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="./static/assets/js/html5shiv.js"></script>
+      <script src="./static/assets/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body id="f" data-spy="scroll" data-offset="0" data-target="#theMenu">
+
+	<!-- Menu -->
+	<nav class="menu" id="theMenu">
+		<div class="menu-wrap">
+			<h1 class="logo" ><a href="/#home">Lingo Box</a></h1>
+			<i class="icon-remove menu-close"></i>
+			<a href="{{url_for('home')}}" >Home</a>
+			<a href="/#translator" >Translator</a>
+			<a href="/#dictionary" >Dictionary</a>
+			<a href="#about" class="smoothScroll">About</a>
+			<a href="#portfolio" class="smoothScroll">Portfolio</a>
+			<a href="#contact" class="smoothScroll">Contact</a>
+			<a href="#"><i class="icon-facebook"></i></a>
+			<a href="#"><i class="icon-twitter"></i></a>
+			<a href="#"><i class="icon-dribbble"></i></a>
+			<a href="#"><i class="icon-envelope"></i></a>
+		</div>
+
+		<!-- Menu button -->
+		<div id="menuToggle"><i class="icon-reorder"></i></div>
+	</nav>
+
+
+
+
+
+
+	<!-- ========== DICTIONARY SECTION ========== -->
+
+	<div id="f">
+		<div class="container">
+
+
+			<div class="row">
+				<h3 >DICTIONARY</h3>
+
+				<p class="centered"><i class="icon icon-circle"></i><i class="icon icon-circle"></i><i class="icon icon-circle"></i></p>
+				<!-- INTRO INFORMATIO-->
+				<section id="dictionary"></section>
+				<form  action="{{url_for('dictionary')}}" method="post">
+					<div class="grid text-center" id="f">
+
+					  <div class="g-col-3 g-col-md-3">
+						  <select class=" form-select form-select-lg mb-5" name="select-from" aria-label="Large select example" required="required">
+<script>
+    function jump(h) {
+        var url = location.href; // Save down the URL without hash.
+        location.href = "#" + h; // Go to the target element.
+        history.replaceState(null, null, url); // Remove the hash from the URL.
+    }
+    jump('dictionary'); // Replace 'results' with the actual ID of your target section.
+</script>
+
+					  {%if dictionary%}
+					  <option selected>{{from_lan}}</option>
+						{%for item in languages%}
+					  		<option >{{item}}</option>
+						{%endfor%}
+					  {%else%}
+					  <option selected>Select Language</option>
+						  {%for item in languages%}
+						<option >{{item}}</option>
+						  {%endfor%}
+					  {%endif%}
+
+					</select>
+					  </div>
+						<h3>TO</h3>
+					  <div class="g-col-3 g-col-md-3" >
+						  <select class=" form-select form-select-lg mb-5" name="select-to">
+
+					  <option selected>English</option>
+
+					</select>
+
+
+					  </div>
+
+
+
+						<div class="g-col-12 g-col-sm-12">
+							<input name="vocab" class="form-container container" style="height:1.5cm;">
+						</div>
+
+					</div>
+
+					  <input class="button-sub mb-5"  type="submit" name="action" value="Submit">
+
+
+					{%if dictionary%}
+						<div class="accordion" id="accordionPanelsStayOpenExample">
+						  <div class="accordion-item">
+							<h2 class="fs-1 ">
+							  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+								  {%if from_lan == 'English'%}
+								  	English to {{from_lan}} and Thesaurus
+								  {%elif not from_lan == 'English'%}
+								  	{{from_lan}} to English and Thesaurus
+								  {%endif%}
+
+							  </button>
+							</h2>
+							<div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+							  <div class="accordion-body">
+								  {%if from_lan == 'English' %}
+									<p style="color:black">phonetic</p>
+								  {%endif%}
+								  <h4 style="color:black; text-align:left">{{pos}} - {{from_lan}}</h4>
+								  <br>
+								  <H3 style="color:black; text-align:left">{{word}}: {{result}}</H3>
+							  </div>
+							</div>
+						  </div>
+							<div class="accordion-item">
+							<h2 class="accordion-header">
+							  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+								English {{from_lan}} Sentences
+							  </button>
+							</h2>
+									<div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show" >
+
+							  <div class="accordion-body">
+								  <h4 style="color:black; text-align:left">Phonetic: {{phonetic_text}}</h4>
+								  <audio controls>
+									<source src="{{audio}}" type="audio/ogg">
+									<source src="{{audio}}" type="audio/mpeg">
+									Your browser does not support the audio element.
+								  </audio>
+								  {%if examples%}
+								  	<h3 style="color:black; text-align:left">Examples</h3>
+									  {%for example in examples%}
+								  		<h4 style="color:black; text-align:left">{{example}}</h4>
+
+								  {%endfor%}
+								  {%endif%}
+
+							  </div>
+							</div>
+						  </div>
+						  <div class="accordion-item ">
+							<h2 class="accordion-header">
+							  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+								English Dictionary
+							  </button>
+							</h2>
+							<div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse show">
+							  <div class="accordion-body">
+								  {%if definitions_n%}
+								  	<h3 style="color:black; text-align:left">Noun</h3>
+									  {%for definition in definitions_n%}
+								  		<h4 style="color:black; text-align:left">{{definition}}</h4>
+
+								  {%endfor%}
+								  {%endif%}
+								  {%if definitions_v%}
+								  	<h3 style="color:black; text-align:left">Verb</h3>
+									  {%for definition in definitions_v%}
+								  		<h4 style="color:black; text-align:left">{{definition}}</h4>
+
+								  {%endfor%}
+								  {%endif%}
+								  {%if definitions_adj%}
+								  	<h3 style="color:black; text-align:left">Adjective</h3>
+									  {%for definition in definitions_adj%}
+								  		<h4 style="color:black; text-align:left">{{definition}}</h4>
+
+								  {%endfor%}
+								  {%endif%}
+							  </div>
+							</div>
+						  </div>
+						  <div class="accordion-item">
+							<h2 class="accordion-header">
+							  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapsefour" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+								Wikipedia (EN)
+							  </button>
+							</h2>
+							<div id="panelsStayOpen-collapsefour" class="accordion-collapse collapse">
+							  <div class="accordion-body">
+								<h4 style="color:black; text-align:left">To know more <a href="{{wiki}}">Click here</a></h4>
+							  </div>
+							</div>
+						  </div>
+						</div>
+					{%endif%}
+				</form>
+<!--					<p><button type="button" class="btn btn-warning">I HAVE A FREELANCE JOB</button></p>-->
+			</div>
+
+		</div><!-- /container -->
+	</div><!-- /f -->
+
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+	<script src="./static/assets/js/classie.js"></script>
+    <script src="./static/assets/js/bootstrap.min.js"></script>
+    <script src="./static/assets/js/smoothscroll.js"></script>
+	<script src="./static/assets/js/main.js"></script>
+</body>
+</html>
