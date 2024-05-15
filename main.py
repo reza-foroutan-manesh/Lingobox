@@ -37,9 +37,9 @@ def swap():
             lan_2 = ''
             textarea_1 = request.form.get('txt-to-tr')
             for (key, value) in languages['translation'].items():
-                if value['nativeName'] == f'{request.form.get('select1')}':
+                if value['nativeName'] == f"{request.form.get('select1')}":
                     lan_1 = key
-                if value['nativeName'] == f'{request.form.get('select2')}':
+                if value['nativeName'] == f"{request.form.get('select2')}":
                     lan_2 = key
             # print(lan_1, lan_2)
             querystring = {"to[0]": f"{lan_2}", "api-version": "3.0", "profanityAction": "NoAction",
@@ -47,7 +47,7 @@ def swap():
 
             payload = [{"Text": f"{textarea_1}"}]
 
-            response = requests.post(f'{URL}/translate', json=payload, headers=HEADERS, params=querystring)
+            response = requests.post(f"{URL}/translate", json=payload, headers=HEADERS, params=querystring)
 
             # print(response.json()[0]['translations'][0]['text'])
             return render_template('index.html', result=response.json()[0]['translations'][0]['text'],
@@ -59,7 +59,7 @@ def swap():
 
 @app.route('/dictionary', methods=["GET", "POST"])
 def dictionary():
-    if request.method == 'POST':
+    if request.method == "POST":
 
         # print(request.form['vocab'], request.form['select-to'])
         from_lan = ''
@@ -67,14 +67,14 @@ def dictionary():
         vocab = request.form['vocab']
         payload = [{"Text": vocab}]
         for (key, value) in languages['translation'].items():
-            if value['nativeName'] == f'{request.form['select-from']}':
+            if value['nativeName'] == f"{request.form['select-from']}":
                 from_lan = key
 
         # print(from_lan, to_lan)
 
         querystring = {"to": to_lan, "api-version": "3.0", "from": from_lan}
 
-        response = requests.post(f'{URL}/Dictionary/Lookup', json=payload, headers=HEADERS, params=querystring)
+        response = requests.post(f"{URL}/Dictionary/Lookup", json=payload, headers=HEADERS, params=querystring)
 
         result = response.json()[0]
 
