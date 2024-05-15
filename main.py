@@ -18,7 +18,7 @@ HEADERS = {
 
 @app.route('/')
 def home():
-    return render_template('index.html', languages=native_names)
+    return render_template('index.html')
 
 
 @app.route('/swap', methods=['GET', 'POST'])
@@ -50,11 +50,11 @@ def swap():
             response = requests.post(f"{URL}/translate", json=payload, headers=HEADERS, params=querystring)
 
             # print(response.json()[0]['translations'][0]['text'])
-            return render_template('index.html', result=response.json()[0]['translations'][0]['text'],
+            return render_template('translator.html', result=response.json()[0]['translations'][0]['text'],
                                    first_text=textarea_1, t_1=request.form.get('select1'),
                                    t_2=request.form.get('select2'), languages=native_names, translate=True)
 
-    return redirect('/#translator')
+    return render_template('translator.html', languages=native_names)
 
 
 @app.route('/dictionary', methods=["GET", "POST"])
