@@ -30,29 +30,37 @@ def swap():
             item2 = request.form.get('select2')
             box1 = request.form.get('txt-to-tr')
             box2 = request.form.get('tr')
-            return render_template('index.html', languages=native_names, anchor='translator', item1=item1, item2=item2,
+            return render_template('translator.html', languages=native_names, anchor='translator', item1=item1, item2=item2,
                                    box1=box1, box2=box2, swap=True)
         elif action == 'TRANSLATE':
-            lan_1 = ''
-            lan_2 = ''
-            textarea_1 = request.form.get('txt-to-tr')
-            for (key, value) in languages['translation'].items():
-                if value['nativeName'] == f"{request.form.get('select1')}":
-                    lan_1 = key
-                if value['nativeName'] == f"{request.form.get('select2')}":
-                    lan_2 = key
-            # print(lan_1, lan_2)
-            querystring = {"to[0]": f"{lan_2}", "api-version": "3.0", "profanityAction": "NoAction",
-                           "textType": "plain"}
+            try:
+                lan_1 = ''
+                lan_2 = ''
+                textarea_1 = request.form.get('txt-to-tr')
+                if textarea_1 == "":
+                    flash('Box cannot be empty')
+                    return redirect(url_for('swap'))
 
-            payload = [{"Text": f"{textarea_1}"}]
+                for (key, value) in languages['translation'].items():
+                    if value['nativeName'] == f"{request.form.get('select1')}":
+                        lan_1 = key
+                    if value['nativeName'] == f"{request.form.get('select2')}":
+                        lan_2 = key
+                # print(lan_1, lan_2)
+                querystring = {"to[0]": f"{lan_2}", "api-version": "3.0", "profanityAction": "NoAction",
+                               "textType": "plain"}
 
-            response = requests.post(f"{URL}/translate", json=payload, headers=HEADERS, params=querystring)
+                payload = [{"Text": f"{textarea_1}"}]
 
-            # print(response.json()[0]['translations'][0]['text'])
-            return render_template('translator.html', result=response.json()[0]['translations'][0]['text'],
-                                   first_text=textarea_1, t_1=request.form.get('select1'),
-                                   t_2=request.form.get('select2'), languages=native_names, translate=True)
+                response = requests.post(f"{URL}/translate", json=payload, headers=HEADERS, params=querystring)
+
+                # print(response.json()[0]['translations'][0]['text'])
+                return render_template('translator.html', result=response.json()[0]['translations'][0]['text'],
+                                       first_text=textarea_1, t_1=request.form.get('select1'),
+                                       t_2=request.form.get('select2'), languages=native_names, translate=True)
+            except KeyError:
+                flash('Select your language please!!!')
+                return redirect(url_for('swap'))
 
     return render_template('translator.html', languages=native_names)
 
