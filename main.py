@@ -1,17 +1,19 @@
+import os
+
 from flask import flash, request, url_for, render_template, redirect, Flask
 import requests
 from languages import languages, native_names
 
 app = Flask(__name__)
 
-app.config["SECRET_KEY"] = 'reza20270123456789'
+app.config["SECRET_KEY"] = os.environ.get('SECRET_KEY')
 
-
+os.environ.get('X-RapidAPI-Key')
 URL = "https://microsoft-translator-text.p.rapidapi.com"
 
 HEADERS = {
     "content-type": "application/json",
-    "X-RapidAPI-Key": "e19bdaf7b9msh381c99666583e17p197e2ajsn3a74b00d95f7",
+    "X-RapidAPI-Key": os.environ.get('X-RapidAPI-Key'),
     "X-RapidAPI-Host": "microsoft-translator-text.p.rapidapi.com"
 }
 
